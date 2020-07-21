@@ -15,8 +15,8 @@ RUN npm install
 # Copy the source code from your work directory to the container's work directory
 COPY ./ ./
 
-# Node server runs on port 8080
-EXPOSE 8080
+# Exposing port 8000 on the container. This is the port where Node.js application is running
+EXPOSE 8000
 
 # Startup Command
 CMD ["npm", "start"]
