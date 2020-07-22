@@ -1,8 +1,12 @@
 version: "3" # Version of docker compose .yml file
 services: # Specify services. Each service will run in container
-  redis-server:
-    image: "redis" # Redis image will be pulled from dockerhub and run in the container
-  node-app:
-    build: . # Node app image will be built from Dockerfile and run in the container
-    ports:
-      - "8000:8000" # Map Local machine port to container port
+    redis-server: # Redis image will be built from Dockerfile and run in the container
+        build:
+            context: .
+            dockerfile: Dockerfile-redis
+    node-app: # Node app image will be built from Dockerfile and run in the container
+        build:
+            context: .
+            dockerfile: Dockerfile-node
+        ports:
+            - "8000:8000" # Map Local machine port to container port

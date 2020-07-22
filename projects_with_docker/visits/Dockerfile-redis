@@ -1,0 +1,11 @@
+# Use an existing docker image as base
+From centos:7
+
+# Download and install dependencies 
+RUN yum -y install epel-release
+RUN yum -y install redis
+
+COPY ./redis.conf ./
+
+# Specify the startup command
+CMD ["redis-server", "./redis.conf"]
