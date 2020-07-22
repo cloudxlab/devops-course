@@ -5,7 +5,7 @@ const express = require('express');
 const PORT = 8000;
 const HOST = '0.0.0.0';
 
-// Creating the app
+// Creating the instance of express app
 const app = express();
 
 // Defining logic when user visits the root or home page
