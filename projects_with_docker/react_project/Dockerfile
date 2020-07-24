@@ -1,5 +1,7 @@
+#### Step 1
+
 # Use an existing docker image as base
-From node:alpine
+FROM node:alpine as builder
 
 # Specify WORKDIR
 WORKDIR /react-project
@@ -15,4 +17,12 @@ RUN npm install
 COPY ./ ./
 
 # Startup Command
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "build"]
+
+#### Step 2
+# Copy the build directory to Nginx directory
+
+# Fetch nginx image from docker hub
+FROM nginx
+EXPOSE 80
+COPY --from=builder /react-project/build /usr/share/nginx/html
