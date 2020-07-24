@@ -1,0 +1,21 @@
+version: '3'
+services:
+    web:
+        tty: true # Terminal
+        # We are defining the custom Dockerfile
+        build:
+            context: .
+            dockerfile: Dockerfile_dev
+        # Map local machine's 8000 port to container's port 3000
+        # React app runs on port 3000 by default
+        ports:
+            - "8000:3000"
+        # Volumes
+        volumes:
+            # Do not touch node_modules folder in the container
+            # As node_modules folder in container has all the required packages
+            - /react-project/node_modules
+            # Reference local machine's folder to react-project in container
+            # Map
+                # local-machine-folder:container-folder
+            - .:/react-project

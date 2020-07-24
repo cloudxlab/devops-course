@@ -1,0 +1,18 @@
+# Use an existing docker image as base
+From node:alpine
+
+# Specify WORKDIR
+WORKDIR /react-project
+
+# Copy the package.json from your work directory to the container's work directory
+# Until we copy the package.json file to container work directory, npm install will not work
+COPY ./package.json .
+
+# Install dependencies
+RUN npm install
+
+# Copy the source code from your work directory to the container's work directory
+COPY ./ ./
+
+# Startup Command
+CMD ["npm", "run", "start"]
