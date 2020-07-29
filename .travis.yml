@@ -1,0 +1,9 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t singhabhinav/react-project -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true singhabhinav/react-project npm run test
