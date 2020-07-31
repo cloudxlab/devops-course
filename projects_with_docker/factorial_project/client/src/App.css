@@ -18,6 +18,10 @@
   font-size: 1.5em;
 }
 
+form {
+    margin-top: 10px;
+}
+
 .App-intro {
   font-size: large;
 }

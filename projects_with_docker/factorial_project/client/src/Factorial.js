@@ -44,7 +44,7 @@ class Factorial extends Component {
     for (let key in this.state.values) {
       entries.push(
         <div key={key}>
-          For index {key} I calculated {this.state.values[key]}
+          Factorial of {key} - {this.state.values[key]}
         </div>
       );
     }
@@ -56,7 +56,7 @@ class Factorial extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <label>Enter your index:</label>
+          <label>Enter Number:</label>
           <input
             value={this.state.index}
             onChange={event => this.setState({ index: event.target.value })}
@@ -64,10 +64,10 @@ class Factorial extends Component {
           <button>Submit</button>
         </form>
 
-        <h3>Indexes I have seen:</h3>
+        <h3>Input Numbers:</h3>
         {this.renderSeenIndexes()}
 
-        <h3>Calculated Values:</h3>
+        <h3>Results:</h3>
         {this.renderValues()}
       </div>
     );
