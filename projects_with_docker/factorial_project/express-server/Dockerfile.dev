@@ -1,5 +1,5 @@
 FROM node:alpine
-WORKDIR '/app'
+WORKDIR '/factorial-project'
 COPY ./package.json ./
 RUN npm install
 COPY ./ ./

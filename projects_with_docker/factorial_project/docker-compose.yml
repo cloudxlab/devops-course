@@ -9,10 +9,10 @@ services:
     express-server:
         build:
             dockerfile: Dockerfile.dev
-            context: ./server
+            context: ./express-server
         volumes:
-            - /app/node_modules
-            - ./server:/app
+            - /factorial-project/node_modules
+            - ./express-server:/factorial-project
         environment: 
             - REDIS_HOST=redis
             - REDIS_PORT=6379 # Check port from dockerhub
@@ -26,17 +26,17 @@ services:
     react-client:
         build:
             dockerfile: Dockerfile.dev
-            context: ./client
+            context: ./react-client
         volumes:
-            - /app/node_modules
-            - ./client:/app
+            - /factorial-project/node_modules
+            - ./react-client:/factorial-project
     worker:
         build:
             dockerfile: Dockerfile.dev
             context: ./worker
         volumes:
-            - /app/node_modules
-            - ./worker:/app
+            - /factorial-project/node_modules
+            - ./worker:/factorial-project
         environment:
             - REDIS_HOST=redis
             - REDIS_PORT=6379
