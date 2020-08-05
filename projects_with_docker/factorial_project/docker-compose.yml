@@ -1,52 +1,85 @@
 version: '3'
 services:
+    # Postgres service
+    # Taking image from Docker Hub
+    # Specifying the password as postgres_password
     postgres:
         image: 'postgres:latest'
         environment: 
             - POSTGRES_PASSWORD=postgres_password
+
+    # Redis service
+    # Taking the image from Docker Hub
     redis:
         image: 'redis:latest'
+
+    # Express Service
     express-server:
+        # Specifying the Dockerfile
+        # Context is express-server directory
         build:
             dockerfile: Dockerfile.dev
             context: ./express-server
+        # Do not touch node_modules on container
+        # Mount the entire express-server directory to container
         volumes:
             - /factorial-project/node_modules
             - ./express-server:/factorial-project
+        # Since express-server will talk to redis and postgres, we have specified the environment variables for connecting to redis and postgres
         environment: 
-            - REDIS_HOST=redis
-            - REDIS_PORT=6379 # Check port from dockerhub
-            - PGUSER=postgres
-            - PGHOST=postgres
-            - PGDATABASE=postgres
-            - PGPASSWORD=postgres_password
-            - PGPORT=5432
+            - REDIS_HOST=redis # Service name of redis container
+            - REDIS_PORT=6379 # Redis default port. Check port from Docker Hub
+            - PGUSER=postgres # Username for connecting to Postgres
+            - PGPASSWORD=postgres_password # Password for connecting to Postgres
+            - PGHOST=postgres # Service name where Postgres container is running
+            - PGDATABASE=postgres  # Postgres database name 
+            - PGPORT=5432 # Port on which Postgres is running
         depends_on:
-            - postgres
+            - postgres # express-server container will be launched only when postgres container is up
+
+    # React Service
     react-client:
+        # Specifying the Dockerfile
+        # Context is react-client directory
         build:
             dockerfile: Dockerfile.dev
             context: ./react-client
+        # Do not touch node_modules on container
+        # Mount the entire react-client directory to container
         volumes:
             - /factorial-project/node_modules
             - ./react-client:/factorial-project
+
+    # Worker Service
     worker:
+        # Specifying the Dockerfile
+        # Context is worker directory
         build:
             dockerfile: Dockerfile.dev
             context: ./worker
+        # Do not touch node_modules on container
+        # Mount the entire worker directory to container
         volumes:
             - /factorial-project/node_modules
             - ./worker:/factorial-project
+        # Since worker will talk to redis we have specified the environment variables for connecting to redis
         environment:
-            - REDIS_HOST=redis
-            - REDIS_PORT=6379
+            - REDIS_HOST=redis # Service name of redis container
+            - REDIS_PORT=6379 # Redis default port. Check port from Docker Hub
+
+    # Nginx Service
     nginx:
+        # Restart container always if it is stopped
         restart: always
+        # Specifying the Dockerfile
+        # Context is nginx directory
         build:
             dockerfile: Dockerfile.dev
             context: ./nginx
+        # Map host port 8000 to container port 80. Nginx runs on port 80
         ports:
             - '8000:80'
+        # Start nginx container only after react-client and express-server are up 
         depends_on:
             - react-client
             - express-server
