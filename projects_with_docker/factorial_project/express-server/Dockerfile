@@ -1,0 +1,6 @@
+FROM node:alpine
+WORKDIR '/factorial-project'
+COPY ./package.json ./
+RUN npm install
+COPY ./ ./
+CMD ["npm", "run", "start"]
