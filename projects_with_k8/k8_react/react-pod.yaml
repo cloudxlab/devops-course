@@ -3,7 +3,7 @@ kind: Pod # Type of Object we want to create inside k8 cluster. A pod is used to
 metadata:
     name: react-project-pod # This info will show the name of pod in kubectl
     labels:
-	component: react-project-web # Will be helpful for networking with other services
+	    component: react-project-web # Will be helpful for networking with other services
 spec:
     containers:
         - name: react-project # Container name - will come handy while referencing this container
