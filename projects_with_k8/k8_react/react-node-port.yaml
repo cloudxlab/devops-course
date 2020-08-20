@@ -5,8 +5,8 @@ metadata:
 spec:
     type: NodePort # Service Type, other service types are ClusterIP, LoadBalancer and Ingress. With NodePort service we expose the container to the outside world
     ports:
-	- port: 3051 # If any other pod wants to connect to pod, it can use this port
+        - port: 3051 # If any other pod wants to connect to pod, it can use this port
           targetPort: 80 # Port inside the pod which we want to open
           nodePort: 31516 # # The port which we will enter in our web browser. It should be between 30000 to 32767
     selector:
-	    component: react-project-web # The same component we have defined in pod.yml's label
+        component: react-project-web # The same component we have defined in pod.yml's label
