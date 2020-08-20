@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod # Type of Object we want to create inside k8 cluster. A pod is used to run a container
+metadata:
+    name: react-project-pod # This info will show the name of pod in kubectl
+    labels:
+	component: react-project-web # Will be helpful for networking with other services
+spec:
+    containers:
+        - name: react-project # Container name - will come handy while referencing this container
+          image: singhabhinav/react-project-prod # Name of the image in dockerhub
+          ports:
+              - containerPort: 80 # Container port to expose to outside the world
