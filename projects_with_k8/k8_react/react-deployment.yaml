@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment # Type of Object we want to create inside k8 cluster. A deployment runs identical pods
+metadata:
+  name: react-project-pod # Name of the deployment
+spec: # Deployment configuration
+  replicas: 1 # Number of replicas (pods) of this deployment
+  selector: 
+    matchLabels:
+      component: react-project-web # set of pods this deployment is going to control
+  template: # Pod template
+    metadata:
+      labels:
+        component: react-project-web # Deployment will use component to identify which pods it has to manage. Pod's label
+    spec: # Specify all the different containers which are going to run inside this pod
+      containers:
+        - name: react-project # Name of the container
+          image: singhabhinav/react-project-docker  # Image using which the container will be created
+          ports: # Port to open
+            - containerPort: 80

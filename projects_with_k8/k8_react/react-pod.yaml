@@ -7,6 +7,6 @@ metadata:
 spec:
     containers:
         - name: react-project # Container name - will come handy while referencing this container
-          image: singhabhinav/react-project-prod # Name of the image in dockerhub
+          image: singhabhinav/react-project-docker # Name of the image in dockerhub
           ports:
               - containerPort: 80 # Container port to expose to outside the world
