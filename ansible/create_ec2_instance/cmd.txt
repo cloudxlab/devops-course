@@ -1,0 +1,26 @@
+sudo yum install python3 
+sudo yum install -y ansible
+
+# Install pip
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python3 get-pip.py
+
+# Install AWS CLI
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+
+
+# Configure AWS
+aws configure 
+
+# Create virtual environment
+python3 -m venv ansible_env
+
+# Activate virtual environment
+
+source ansible_env/bin/activate
+
+
+# Install boto
+pip install boto3
