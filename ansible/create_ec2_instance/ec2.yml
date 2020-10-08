@@ -11,6 +11,7 @@
   tasks:
     - name: Launch EC2 instance
       ec2:
+         count: 1
          key_name: "{{ keypair }}"
          group_id:
             - sg-02ee0b8af57134c1b
