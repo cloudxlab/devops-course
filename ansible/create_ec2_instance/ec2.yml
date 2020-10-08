@@ -5,7 +5,6 @@
   vars:
     keypair: aws-key
     instance_type: t2.micro
-    security_group: default
     image: ami-03fac5402e10ea93b # Ubuntu 18.04 in us-west-1 region
     region: us-west-1
     subnet: # Your subnet id. Select any subnet
@@ -13,7 +12,8 @@
     - name: Launch EC2 instance
       ec2:
          key_name: "{{ keypair }}"
-         group: "{{ security_group }}"
+         group_id:
+            - sg-02ee0b8af57134c1b
          instance_type: "{{ instance_type }}"
          image: "{{ image }}"
          user_data: "{{ lookup('file', 'user_data') }}"
