@@ -1,0 +1,24 @@
+---
+- name: Create a sandbox instance
+  hosts: ansible-host
+  gather_facts: False
+  vars:
+    keypair: aws-key
+    instance_type: t2.micro
+    security_group: default
+    image: # Specify the image id
+    region: # Specify the region
+    subnet: # Specify the subnet
+  tasks:
+    - name: Launch instance
+      ec2:
+         key_name: "{{ keypair }}"
+         group: "{{ security_group }}"
+         instance_type: "{{ instance_type }}"
+         image: "{{ image }}"
+         user_data: "{{ lookup('file', 'user_data') }}"
+         wait: true
+         region: "{{ region }}"
+         vpc_subnet_id: "{{ subnet }}"
+         assign_public_ip: yes
+      register: ec2
