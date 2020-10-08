@@ -6,11 +6,11 @@
     keypair: aws-key
     instance_type: t2.micro
     security_group: default
-    image: # Specify the image id
-    region: # Specify the region
-    subnet: # Specify the subnet
+    image: ami-03fac5402e10ea93b # Ubuntu 18.04 in us-west-1 region
+    region: us-west-1
+    subnet: # Your subnet id. Select any subnet
   tasks:
-    - name: Launch instance
+    - name: Launch EC2 instance
       ec2:
          key_name: "{{ keypair }}"
          group: "{{ security_group }}"
@@ -21,4 +21,6 @@
          region: "{{ region }}"
          vpc_subnet_id: "{{ subnet }}"
          assign_public_ip: yes
+         instance_tags:
+             Name: Ansible-instances
       register: ec2
