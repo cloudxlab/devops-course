@@ -23,7 +23,7 @@ resource "aws_instance" "ubuntu" {
 
   connection {
     host        = self.public_ip
-    user        = "root"
+    user        = var.ssh_user
     type        = "ssh"
     private_key = file(var.private_key)
     timeout     = "2m"
@@ -40,5 +40,5 @@ resource "aws_instance" "ubuntu" {
 
 resource "aws_key_pair" "deployer" {
   key_name   = "deployer"
-  public_key = var.public_key
+  public_key = file(var.public_key)
 }
