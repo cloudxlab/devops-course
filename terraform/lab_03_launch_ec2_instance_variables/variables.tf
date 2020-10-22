@@ -9,3 +9,6 @@ variable "amis" {
     "us-west-2" = "ami-07a29e5e945228fa1"
   }
 }
+
+variable "public_key" {
+}
