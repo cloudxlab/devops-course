@@ -24,5 +24,5 @@ resource "aws_instance" "ubuntu" {
 
 resource "aws_key_pair" "deployer" {
   key_name   = "deployer"
-  public_key = var.public_key
+  public_key = file(var.public_key)
 }
