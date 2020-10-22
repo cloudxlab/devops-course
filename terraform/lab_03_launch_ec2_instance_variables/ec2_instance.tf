@@ -16,12 +16,13 @@ resource "aws_instance" "ubuntu" {
   count         = 1
   ami           = var.amis[var.region]
   instance_type = "t2.micro"
+  key_name      = "deployer"
   tags = {
     Name = "Ubuntu"
   }
 }
 
 resource "aws_key_pair" "deployer" {
-  key_name   = "id_rsa"
+  key_name   = "deployer"
   public_key = var.public_key
 }
