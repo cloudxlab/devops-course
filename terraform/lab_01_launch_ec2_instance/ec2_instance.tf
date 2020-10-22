@@ -24,11 +24,11 @@ provider "aws" {
 The resource block defines a piece of infrastructure. A resource might be a physical component such as an EC2 instance, or it can be a logical resource such as a Heroku application.
 */
 
-resource "aws_instance" "ubuntu_1804" {
-  count         = 2
+resource "aws_instance" "ubuntu" {
+  count         = 1
   ami           = "ami-03fac5402e10ea93b"
   instance_type = "t2.micro"
   tags = {
-    Name = "Ubuntu 1804"
+    Name = "Ubuntu"
   }
 }

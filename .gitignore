@@ -1,1 +1,3 @@
 ./ansible/ansible_env
+.terraform/
+*.tfstate.*
