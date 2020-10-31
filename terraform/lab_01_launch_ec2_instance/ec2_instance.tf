@@ -1,7 +1,5 @@
 terraform {
 
-  /* The provider block configures the named provider, in our case aws, which is responsible for creating and managing resources. A provider is a plugin that Terraform uses to translate the API interactions with the service. A provider is responsible for understanding API interactions and exposing resources. Because Terraform can interact with any API, you can represent almost any infrastructure type as a resource in Terraform. 
-  */
   required_providers {
     aws = {
       source  = "hashicorp/aws"
