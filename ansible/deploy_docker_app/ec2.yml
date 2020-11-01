@@ -23,11 +23,5 @@
          vpc_subnet_id: "{{ subnet }}"
          assign_public_ip: yes
          instance_tags:
-             Name: Ansible-instances
+             Name: Docker-App-Ansible
       register: ec2
-    - name: Clone Repo
-      shell:
-          cmd: git clone https://github.com/singhabhinav/react-project-docker.git
-    - name: Run docker-compose
-      shell:
-          cmd: cd react-project-docker && docker-compose up

@@ -1,0 +1,12 @@
+---
+- name: Deploy app on Docker
+  hosts: server
+  gather_facts: False
+  become: true
+  tasks:
+    - name: Clone Repo
+      shell:
+          cmd: git clone https://github.com/singhabhinav/react-project-docker.git
+    - name: Docker Compose up
+      shell:
+          cmd: cd react-project-docker && docker-compose up -d
