@@ -1,6 +1,6 @@
 ---
 - name: Create a sandbox instance
-  hosts: ansible-host
+  hosts: ansiblehost
   gather_facts: False
   vars:
     keypair: aws-key
