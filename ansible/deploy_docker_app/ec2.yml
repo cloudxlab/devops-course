@@ -1,6 +1,6 @@
 ---
 - name: Create a sandbox instance
-  hosts: ansiblehost
+  hosts: ansible-host
   gather_facts: False
   vars:
     keypair: aws-key
@@ -25,3 +25,9 @@
          instance_tags:
              Name: Ansible-instances
       register: ec2
+    - name: Clone Repo
+      shell:
+          cmd: git clone https://github.com/singhabhinav/react-project-docker.git
+    - name: Run docker-compose
+      shell:
+          cmd: cd react-project-docker && docker-compose up
