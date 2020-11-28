@@ -57,26 +57,6 @@ Configure new Node and add private key in jenkins credentials
    Execute shell
    ```sh
    #!/bin/bash
-   echo "_______________________________"
-   echo "|                             |"
-   echo "|Welcome to Tejas tech Demo   |"
-   echo "|           _nnnn_            |"
-   echo "|          dGGGGMMb           |"
-   echo "|         @p~qp~~qMb          |"
-   echo "|         M|@||@) M|          |"
-   echo "|         @,----.JM|          |"
-   echo "|        JS^\__/  qKL         |"
-   echo "|       dZP        qKRb       |"
-   echo "|      dZP          qKKb      |"
-   echo "|     fZP            SMMb     |"
-   echo "|     HZM            MMMM     |"
-   echo "|     FqM            MMMM     |"
-   echo "|   __| '.        |\dS'qML    |"
-   echo "|   |    '.       | ' \Zq     |"
-   echo "|  _)      \.___.,|     .'    |"
-   echo "|  \____   )MMMMMP|   .'      |"
-   echo "|       '-'       '--' hjm    |"
-   echo "_______________________________"
    ```
 1. Save your job 
 1. Build job
