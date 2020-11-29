@@ -29,7 +29,7 @@ chmod 700 authorized_keys
 ```
 
 ### Configuration on Master
-Copy the slave node's public key[`id_rsa.pub`] to Master Node's `known_hosts` file
+Copy the slave node's private key[`id_rsa`] to Master Node's `known_hosts` file
 ```sh
 mkdir -p /var/lib/jenkins/.ssh
 cd /var/lib/jenkins/.ssh
